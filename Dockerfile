@@ -1,13 +1,23 @@
-FROM python:3.11
+# Usa la imagen oficial de Python 3.9
+FROM python:3.9
 
-WORKDIR /code
+# Actualiza pip a la última versión
+RUN pip install --upgrade pip
 
-COPY ./requirements.txt /code/requirements.txt
+# Crea un directorio de trabajo
+WORKDIR /usr/src/app
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+# Copia el archivo de requisitos
+COPY requirements.txt .
 
-# 
-COPY ./main.py /code/
+# Instala las dependencias
+RUN pip install --no-cache-dir -r requirements.txt
 
-# 
-CMD ["fastapi", "run", "main.py", "--port", "80"]
+# Copia el resto del código de la aplicación
+COPY . .
+
+# Expone el puerto que usa la aplicación
+EXPOSE 8001
+
+# Comando para ejecutar la aplicación
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001", "--reload"]

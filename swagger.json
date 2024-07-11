@@ -1,0 +1,445 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "FastAPI",
+      "version": "0.1.0"
+    },
+    "host": "https://talkativefastapi.onrender.com/",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+      "/message/add": {
+        "post": {
+          "summary": "Create Message",
+          "operationId": "create_message_message_add_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "title": "Response Create Message Message Add Post"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/getMessages": {
+        "get": {
+          "summary": "Get Messages",
+          "operationId": "get_messages_getMessages_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "type": "object"
+                    },
+                    "type": "array",
+                    "title": "Response Get Messages Getmessages Get"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/fetchMessages/{authUserId}/{userId}": {
+        "get": {
+          "summary": "Fetch Messages",
+          "operationId": "fetch_messages_fetchMessages__authUserId___userId__get",
+          "parameters": [
+            {
+              "name": "authUserId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Authuserid"
+              }
+            },
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Userid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    },
+                    "title": "Response Fetch Messages Fetchmessages  Authuserid   Userid  Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/getSharedPhotos/{userId}": {
+        "get": {
+          "summary": "Get Shared Photos",
+          "operationId": "get_shared_photos_getSharedPhotos__userId__get",
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Userid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "Response Get Shared Photos Getsharedphotos  Userid  Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/getLastMessage/{authUserId}/{userId}": {
+        "get": {
+          "summary": "Get Last Message",
+          "operationId": "get_last_message_getLastMessage__authUserId___userId__get",
+          "parameters": [
+            {
+              "name": "authUserId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Authuserid"
+              }
+            },
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Userid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "title": "Response Get Last Message Getlastmessage  Authuserid   Userid  Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/countUnseenMessages/{authUserId}/{contactUserId}": {
+        "get": {
+          "summary": "Count Unseen Messages",
+          "operationId": "count_unseen_messages_countUnseenMessages__authUserId___contactUserId__get",
+          "parameters": [
+            {
+              "name": "authUserId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Authuserid"
+              }
+            },
+            {
+              "name": "contactUserId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Contactuserid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "title": "Response Count Unseen Messages Countunseenmessages  Authuserid   Contactuserid  Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/messages/{authUserId}/{userId}/seen": {
+        "put": {
+          "summary": "Make Seen",
+          "operationId": "make_seen_messages__authUserId___userId__seen_put",
+          "parameters": [
+            {
+              "name": "authUserId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Authuserid"
+              }
+            },
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Userid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "title": "Response Make Seen Messages  Authuserid   Userid  Seen Put"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/deleteMessage/{messageId}": {
+        "delete": {
+          "summary": "Delete Message",
+          "operationId": "delete_message_deleteMessage__messageId__delete",
+          "parameters": [
+            {
+              "name": "messageId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Messageid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "type": "array",
+              "title": "Detail"
+            }
+          },
+          "type": "object",
+          "title": "HTTPValidationError"
+        },
+        "Message": {
+          "properties": {
+            "from_id": {
+              "type": "integer",
+              "title": "From Id"
+            },
+            "to_id": {
+              "type": "integer",
+              "title": "To Id"
+            },
+            "body": {
+              "type": "string",
+              "title": "Body"
+            },
+            "attachment": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Attachment"
+            },
+            "seen": {
+              "type": "boolean",
+              "title": "Seen"
+            }
+          },
+          "type": "object",
+          "required": [
+            "from_id",
+            "to_id",
+            "body",
+            "seen"
+          ],
+          "title": "Message"
+        },
+        "ValidationError": {
+          "properties": {
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "array",
+              "title": "Location"
+            },
+            "msg": {
+              "type": "string",
+              "title": "Message"
+            },
+            "type": {
+              "type": "string",
+              "title": "Error Type"
+            }
+          },
+          "type": "object",
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError"
+        }
+      }
+    }
+  }
